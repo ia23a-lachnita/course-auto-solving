@@ -1,0 +1,44 @@
+# Keep this repository minimal: workflow sources only
+# Ignore everything by default, then allow-list required files/folders.
+/*
+
+# Keep repository meta/docs
+!/.gitignore
+!/README.md
+!/CLAUDE.md
+
+# Keep Claude workflow + skills
+!/.claude/
+!/.claude/**
+
+# Keep input utility script used in workflow
+!/inputs/
+/inputs/*
+!/inputs/utils/
+/inputs/utils/*
+!/inputs/utils/prepare-input.py
+
+# Keep PDF-to-Markdown extractor script referenced by the skill
+!/uebungen_tag5/
+/uebungen_tag5/*
+!/uebungen_tag5/uebungen/
+/uebungen_tag5/uebungen/*
+!/uebungen_tag5/uebungen/utils/
+/uebungen_tag5/uebungen/utils/*
+!/uebungen_tag5/uebungen/utils/extract-pdf-images.py
+
+# Always ignore generated/runtime artifacts
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.temp
+*.zip
+*.pdf
+*.docx
+*.png
+*.jpg
+*.jpeg
+*.gif

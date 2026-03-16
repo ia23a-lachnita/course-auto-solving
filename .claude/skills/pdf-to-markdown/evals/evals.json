@@ -1,0 +1,23 @@
+{
+  "skill_name": "pdf-to-markdown",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a PDF at C:/Users/xursc/projects/M107/uebungen_tag5/uebungen/materials/lecture.pdf and I want to convert it to Markdown so I can read it more easily. Can you help me with that?",
+      "expected_output": "Claude asks for output directory (or suggests one), then runs the extract-pdf-images.py script and reports results including page count, image count, and path to the .md file. Shows a preview of the generated Markdown.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Can you extract all the diagrams and text from this PDF and put it into a markdown file? The PDF is my-report.pdf in my Downloads folder.",
+      "expected_output": "Claude resolves the path (asks user to confirm or uses C:/Users/xursc/Downloads/my-report.pdf), picks an output directory, runs the script, and summarizes what was extracted.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I need to convert a bunch of slides from a PDF into something I can edit. The file is at C:/Users/xursc/Desktop/slides.pdf. Save the output next to the PDF.",
+      "expected_output": "Claude uses C:/Users/xursc/Desktop/ as the output directory, runs the script on slides.pdf, reports summary, and shows a preview of the resulting Markdown.",
+      "files": []
+    }
+  ]
+}

@@ -17,13 +17,13 @@ This skill converts a PDF file into a Markdown document. It:
 ## Script location
 
 ```
-C:\Users\xursc\projects\M107\uebungen_tag5\uebungen\utils\extract-pdf-images.py
+C:\Users\xursc\projects\M107\.claude\skills\pdf-to-markdown\scripts\extract-pdf-images.py
 ```
 
 ## Usage
 
 ```bash
-python "C:/Users/xursc/projects/M107/uebungen_tag5/uebungen/utils/extract-pdf-images.py" \
+python "C:/Users/xursc/projects/M107/.claude/skills/pdf-to-markdown/scripts/extract-pdf-images.py" \
   "<pdf_path>" \
   --output "<output_dir>"
 ```

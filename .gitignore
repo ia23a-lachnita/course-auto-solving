@@ -18,14 +18,8 @@
 /inputs/utils/*
 !/inputs/utils/prepare-input.py
 
-# Keep PDF-to-Markdown extractor script referenced by the skill
-!/uebungen_tag5/
-/uebungen_tag5/*
-!/uebungen_tag5/uebungen/
-/uebungen_tag5/uebungen/*
-!/uebungen_tag5/uebungen/utils/
-/uebungen_tag5/uebungen/utils/*
-!/uebungen_tag5/uebungen/utils/extract-pdf-images.py
+# Ignore training/exercise folders entirely
+/uebungen_tag5/
 
 # Always ignore generated/runtime artifacts
 **/__pycache__/

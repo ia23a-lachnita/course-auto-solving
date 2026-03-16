@@ -6,7 +6,7 @@ Minimal setup for the autonomous M107 solving workflow.
 - `CLAUDE.md` with the `.` trigger workflow
 - `.claude/` agent skills and local settings
 - `inputs/utils/prepare-input.py` helper utility
-- `uebungen_tag5/uebungen/utils/extract-pdf-images.py` PDF-to-Markdown extractor
+- `.claude/skills/pdf-to-markdown/scripts/extract-pdf-images.py` PDF-to-Markdown extractor
 
 ## Excluded by design
 Task-specific files and generated artifacts are ignored (`inputs` drops, extracted outputs, zips, images, docs, caches, etc.).

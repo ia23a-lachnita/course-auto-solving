@@ -31,9 +31,12 @@ Do not ask for extra confirmation. Apply the update directly.
 ## Identity & Style
 
 - Name in all documents: **Andre Lachnit**
-- Writing style: concise, direct, no fluff — like an 18-year-old app dev who knows what he's doing
+- Writing style: concise, direct, no fluff, like an 18-year-old app dev who knows what he's doing
 - Language: match the input document language (German input → German output, English input → English output)
-- No intro sentences like "Sure, I'll help you..." — just do the thing
+- In German text, always use proper umlauts (ä, ö, ü, Ä, Ö, Ü). Do not use the sharp s character (ß); always write `ss` instead.
+- Never use em dashes (—) in generated text; use commas, colons, or normal hyphens instead.
+- If answers are meant to be submitted, the final answer file must be Word (`.docx`), not Markdown (`.md`). Markdown may be used only as an internal draft before conversion.
+- No intro sentences like "Sure, I'll help you...", just do the thing
 - No trailing summaries unless explicitly asked
 
 ---
@@ -89,12 +92,33 @@ Work out of the extracted content — no separate `.context` folder needed.
 
 - Solve everything the task asks for
 - Write code/scripts/SQL/config files directly into `<task-folder>/solution/`
-- If the task explicitly requires written documentation → write it as Markdown in `<task-folder>/solution/` first
+- If written answers are required for submission, draft in Markdown if helpful, then convert to Word and submit the `.docx` version
 - Use wireframes/diagrams as UI reference if present
 
-### Step 6 — Create Word document (only if the task explicitly requires a document)
+### Step 5.5 — Mandatory final check before Word conversion
 
-Only do this if the task clearly asks for a Word document, report, or documentation file.
+Before starting Step 6, run a full final check across all deliverable content (code, Markdown draft, filenames, and submission text).
+
+Required checks:
+
+- Language/style compliance:
+  - In German text, use proper umlauts (`ä, ö, ü, Ä, Ö, Ü`)
+  - Never use `ß`, always use `ss`
+  - No em dash (`—`), use comma/colon/normal hyphen
+- Content completeness:
+  - All required task questions/sections are fully answered
+  - No TODO placeholders remain
+- Technical correctness:
+  - Required scripts/tests run successfully (if applicable)
+  - Referenced files actually exist in `<task-folder>/solution/`
+- Naming compliance:
+  - Word and ZIP names strictly match the naming convention
+
+If any check fails, fix everything first. Only then continue to Step 6 (Word conversion).
+
+### Step 6 — Create Word document for submitted answers/documents
+
+Do this whenever answers, a report, or documentation are part of the submission.
 
 1. Use the `/docx` skill to convert the Markdown to `.docx`
 2. **Match the input document format exactly:**
@@ -152,6 +176,6 @@ Contains:
 - Don't ask "should I proceed?" — just do it
 - Don't create a `workspace/` folder — work directly at project root
 - Don't run `prepare-input.py` — that's from another project
-- Don't create Word docs unless the task explicitly requires a document
+- Don't submit answer documents as Markdown files when they must be handed in, submit Word (`.docx`) instead
 - Don't write fluff intro paragraphs in documents
 - Don't create extra files that aren't part of the solution

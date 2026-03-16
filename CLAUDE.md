@@ -4,6 +4,28 @@
 
 When the user sends just `.`, run the full autonomous workflow below without asking for confirmation.
 
+## Trigger: `init name`
+
+When the user sends `init name`, do this immediately:
+
+1. Ask for first and last name in one message (example: `Andre Lachnit`)
+2. Wait for user input
+3. Parse the input as:
+  - First name = first token
+  - Last name = second token
+4. Update this `CLAUDE.md` file automatically so from now on all naming uses that entered name
+5. Confirm shortly that the name profile is saved and active
+
+When updating `CLAUDE.md`, replace all hardcoded identity/name patterns:
+
+- `Name in all documents: **...**`
+- `M107_<ElementName>_<LastName>_<FirstName>.docx`
+- `M107_<ElementName>_<LastName>_<FirstName>.zip`
+- Submission example filenames
+- File Naming Convention table entries
+
+Do not ask for extra confirmation. Apply the update directly.
+
 ---
 
 ## Identity & Style
@@ -24,8 +46,19 @@ When the user sends just `.`, run the full autonomous workflow below without ask
 2. Sort all files by modification date descending
 3. Group files added at the same time (within ~5 min of each other) — those belong to one task
 4. Pick the newest group as the current task
+5. Check whether that task is already done:
+  - Derive `task-name` from the main input file (lowercase, hyphens, no extension)
+  - If a root folder like `<task-name>_YYYY-MM-DD/` already exists and contains a finished submission ZIP for that element, treat the task as already done
 
-If `inputs/` is empty: tell the user to drop files there and stop.
+Fallback behavior (automatic, no questions):
+
+- If `inputs/` is empty, or the newest grouped task is already done, check the user's Downloads folder for new task files
+- In Downloads, sort by modification date descending and group related files within ~5 minutes
+- Pick the newest valid task group that is not already done
+- Move that group into `inputs/` (preserve filenames)
+- Continue the workflow from `inputs/` as normal
+
+If no valid task exists in both `inputs/` and Downloads: tell the user no new task files were found and stop.
 
 ### Step 2 — Extract & convert input files
 

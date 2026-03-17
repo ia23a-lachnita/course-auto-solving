@@ -105,6 +105,8 @@ Required checks:
   - In German text, use proper umlauts (`ä, ö, ü, Ä, Ö, Ü`)
   - Never use `ß`, always use `ss`
   - No em dash (`—`), use comma/colon/normal hyphen
+  - Mandatory hard gate command: `pwsh -File ./utils/check-german-style.ps1 -Path <task-folder>/solution`
+  - If this command exits with non-zero code, STOP packaging and fix all reported lines first
 - Content completeness:
   - All required task questions/sections are fully answered
   - No TODO placeholders remain

@@ -17,6 +17,7 @@
 !/inputs/utils/
 /inputs/utils/*
 !/inputs/utils/prepare-input.py
+!utils/
 
 # Ignore training/exercise folders entirely
 /uebungen_tag5/

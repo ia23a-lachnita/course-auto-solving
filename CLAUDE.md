@@ -51,7 +51,7 @@ Do not ask for extra confirmation. Apply the update directly.
 4. Pick the newest group as the current task
 5. Check whether that task is already done:
   - Derive `task-name` from the main input file (lowercase, hyphens, no extension)
-  - If a root folder like `<task-name>_YYYY-MM-DD/` already exists and contains a finished submission ZIP for that element, treat the task as already done
+  - If a folder in `tasks/active/` or `tasks/done/` like `<task-name>_YYYY-MM-DD/` already exists and contains a finished submission ZIP for that element, treat the task as already done
 
 Fallback behavior (automatic, no questions):
 
@@ -74,11 +74,11 @@ Handle input files manually (no external prepare script):
 
 Work out of the extracted content — no separate `.context` folder needed.
 
-### Step 3 — Create task folder at project root
+### Step 3 — Create task folder under tasks/active
 
-- Name format: `<task-name>_<YYYY-MM-DD>/` directly in the project root
+- Name format: `tasks/active/<task-name>_<YYYY-MM-DD>/`
 - `task-name` = main input file name, lowercase, hyphens, no extension
-- Example: `lb2-dokumentation_2026-03-16/`
+- Example: `tasks/active/lb2-dokumentation_2026-03-16/`
 - Create a `solution/` subfolder inside it
 
 ### Step 4 — Read & understand the task
@@ -137,6 +137,7 @@ Do this whenever answers, a report, or documentation are part of the submission.
 1. ZIP everything in `<task-folder>/solution/`
 2. Name: `M107_<ElementName>_Lachnit_Andre.zip`
 3. Save ZIP to `<task-folder>/`
+4. Move finished task folder from `tasks/active/` to `tasks/done/`
 
 ### Step 8 — Tell the user what to submit
 
@@ -145,7 +146,7 @@ Be specific:
 ```
 Done. Submit this:
 
-  lb2-dokumentation_2026-03-16/M107_LB2_Lachnit_Andre.zip
+  tasks/done/lb2-dokumentation_2026-03-16/M107_LB2_Lachnit_Andre.zip
 
 Contains:
   - M107_LB2_Lachnit_Andre.docx
@@ -158,7 +159,8 @@ Contains:
 
 | Type | Pattern |
 |------|---------|
-| Task folder | `<task-name>_YYYY-MM-DD/` (at project root) |
+| Task folder (active) | `tasks/active/<task-name>_YYYY-MM-DD/` |
+| Task folder (done) | `tasks/done/<task-name>_YYYY-MM-DD/` |
 | Solution files | `<task-folder>/solution/` |
 | Word doc | `M107_<Element>_Lachnit_Andre.docx` |
 | ZIP submission | `M107_<Element>_Lachnit_Andre.zip` |

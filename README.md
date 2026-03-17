@@ -15,3 +15,10 @@ Task-specific files and generated artifacts are ignored (`inputs` drops, extract
 1. Drop new task files into `inputs/` (local, ignored by git).
 2. Open the workspace in VS Code with Copilot agent mode.
 3. Send `.` to run the autonomous workflow from `CLAUDE.md`.
+
+## Local Workspace Layout
+- `tasks/active/`: task folders currently being solved
+- `tasks/done/`: completed task folders with final ZIP submissions
+- `exercises/`: practice and module exercise projects
+- `references/`: templates, guides, and reference material
+- `scratch/`: temporary extraction files and one-off helper scripts

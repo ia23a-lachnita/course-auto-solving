@@ -41,6 +41,22 @@ Do not ask for extra confirmation. Apply the update directly.
 
 ---
 
+## Root Map
+
+Keep project root clean and use these fixed locations:
+
+- `inputs/`: newest task input drops only
+- `tasks/active/`: task folders currently in progress
+- `tasks/done/`: completed task folders with final ZIP
+- `exercises/`: training and module exercise projects
+- `references/`: templates, guides, and reference material
+- `scratch/`: temporary extracts and one-off helper files
+- `utils/`: shared workflow utilities
+
+Do not create task folders directly at project root.
+
+---
+
 ## Autonomous Workflow (triggered by `.`)
 
 ### Step 1 — Find the newest task files in `inputs/`

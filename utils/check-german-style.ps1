@@ -1,6 +1,8 @@
 param(
     [Parameter(Mandatory = $true)]
-    [string]$Path
+    [string]$Path,
+
+    [switch]$IncludeCodeText
 )
 
 $ErrorActionPreference = "Stop"
@@ -10,7 +12,8 @@ if (-not (Test-Path -LiteralPath $Path)) {
     exit 2
 }
 
-$extensions = @(".md", ".txt", ".js", ".ts", ".sol", ".py")
+$proseExtensions = @(".md", ".txt")
+$codeExtensions = @(".js", ".ts", ".sol", ".py", ".ps1")
 $excludeDirs = "node_modules|artifacts|cache|.git|.venv"
 
 $rules = @(
@@ -29,6 +32,13 @@ $rules = @(
     @{ Pattern = "\bgeschuetzte\b"; Message = "Umlaut ersetzen: geschuetzte -> geschützte" },
     @{ Pattern = "\bGeschuetzte\b"; Message = "Umlaut ersetzen: Geschuetzte -> Geschützte" }
 )
+
+if ($IncludeCodeText) {
+    $extensions = $proseExtensions + $codeExtensions
+}
+else {
+    $extensions = $proseExtensions
+}
 
 $files = Get-ChildItem -LiteralPath $Path -Recurse -File |
     Where-Object {
@@ -64,5 +74,10 @@ if ($violations.Count -gt 0) {
     exit 1
 }
 
-Write-Host "German style check passed." -ForegroundColor Green
+if ($IncludeCodeText) {
+    Write-Host "German style check passed (prose + code text mode)." -ForegroundColor Green
+}
+else {
+    Write-Host "German style check passed (prose mode)." -ForegroundColor Green
+}
 exit 0

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__bzz-sharepoint__list_folder"
+    ]
+  }
+}

@@ -113,7 +113,9 @@ If no valid new task exists in any source: tell the user and stop.
 Handle input files manually (no external prepare script):
 
 - **ZIP files**: extract with Python `zipfile` into a temp subfolder inside `inputs/`
-- **PDF files**: use the `/pdf-to-markdown` skill to convert PDFs → Markdown with image extraction
+- **PDF files**:
+  - To **read/understand** the task content: use the `/pdf-to-markdown` skill (PDF → Markdown with image extraction)
+  - To **convert a PDF to a submittable Word document**: use `mcp__acrobat-converter__convert_pdf_to_word` — this uses Adobe Acrobat Pro locally and produces native-quality DOCX output
 - **JSON files**: read directly
 - **Markdown / text files**: read directly
 
@@ -178,8 +180,8 @@ When screenshots are required by the assignment:
 After creating the solution, run a subagent review loop with the full assignment text and the produced solution.
 
 1. Ask the subagent to review completeness, correctness, formatting compliance, and submission readiness
-2. If result is not `perfekt`, fix issues and run the review again
-3. Repeat until the subagent rates the solution as `perfekt` or a hard external blocker is identified
+2. If result is not rated perfect, fix issues and run the review again
+3. Repeat until the subagent rates the solution as perfect and no hard external blocker is identified
 4. If blocked, report exactly what is missing and what the user must do
 
 ### Step 5.5 — Mandatory final check before Word conversion
@@ -274,8 +276,11 @@ Contains:
 
 ## Tools
 
-- **PDF → Markdown**: `/pdf-to-markdown` skill
-- **Word documents**: `/docx` skill (only when task requires it)
+- **PDF → Markdown** (read/understand): `/pdf-to-markdown` skill
+- **PDF → Word** (convert for submission): `mcp__acrobat-converter__convert_pdf_to_word` — uses Adobe Acrobat Pro locally, native quality
+  - Single file: `convert_pdf_to_word(pdf_path, output_path)`
+  - Whole folder: `convert_folder_to_word(folder_path, output_folder)`
+- **Word documents** (create/edit): `/docx` skill (only when task requires it)
 - **ZIP**: Bash `zip -r` or Python `zipfile`
 - **SharePoint**: `mcp__bzz-sharepoint__list_folder`, `mcp__bzz-sharepoint__download_file`, `mcp__bzz-sharepoint__upload_file`
   - Base site: `/sites/UBSLernende2324-23_Appi-A/Freigegebene Dokumente/23_Appi-A/M107`
